@@ -18,16 +18,21 @@ public class CarController {
 
     @GetMapping("/{id}")
     public Car getCar(@PathVariable int id) {
-        return this.carService.getCar(id);
+        return this.carService.getById(id);
     }
 
     @GetMapping
     public List<Car> getCars() {
-        return this.carService.getCars();
+        return this.carService.getAll();
     }
 
     @PostMapping
     public void addCar(@RequestBody Car car) {
         this.carService.addCar(car);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id) {
+        this.carService.remove(id);
     }
 }

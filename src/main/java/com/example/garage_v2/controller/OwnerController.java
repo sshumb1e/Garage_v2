@@ -19,8 +19,8 @@ public class OwnerController {
 
 
     @GetMapping("/{id}")
-    public List<OwnerGarage> getOwner(@PathVariable int id) {
-        return this.ownerService.getOwner(id);
+    public OwnerGarage getOwner(@PathVariable int id) {
+        return this.ownerService.getById(id);
     }
 
     @GetMapping
@@ -35,6 +35,6 @@ public class OwnerController {
 
     @PostMapping("/{ownerId}/{carId}")
     public void addCarToUser(@PathVariable int ownerId, @PathVariable int carId) {
-        this.ownerService.addCarToOwner(ownerId,carId);
+        this.ownerService.addOwnersCar(ownerId,carId);
     }
 }
