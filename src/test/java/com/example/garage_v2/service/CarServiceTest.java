@@ -3,7 +3,7 @@ package com.example.garage_v2.service;
 
 import com.example.garage_v2.model.Car;
 import com.example.garage_v2.repository.CarRepository;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
