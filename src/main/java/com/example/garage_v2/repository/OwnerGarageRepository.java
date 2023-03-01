@@ -16,7 +16,7 @@ public interface OwnerGarageRepository extends CrudRepository<OwnerGarage, Integ
                 FULL JOIN public.car as t2
                 ON t1.owner_id = t2.owner_id
                 WHERE t1.owner_id = (:id)
-                ORDER BY t2.brand, t2.model
+                ORDER BY t2.brand, t2.colour
             ;
             """)
     OwnerGarage findOwnerGarageById(@Param("id") int id);
