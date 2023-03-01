@@ -3,6 +3,7 @@ package com.example.garage_v2.controller;
 import com.example.garage_v2.model.Owner;
 import com.example.garage_v2.model.OwnerGarage;
 import com.example.garage_v2.service.OwnerService;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,11 +20,13 @@ public class OwnerController {
 
 
     @GetMapping("/{id}")
+    @Cacheable(value = "owners", key = "#id")
     public OwnerGarage getOwner(@PathVariable int id) {
         return this.ownerService.getById(id);
     }
 
     @GetMapping
+    @Cacheable(value = "allOwners")
     public List<OwnerGarage> getOwners() {
         return this.ownerService.getOwners();
     }
