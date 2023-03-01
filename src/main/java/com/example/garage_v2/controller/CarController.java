@@ -2,6 +2,7 @@ package com.example.garage_v2.controller;
 
 import com.example.garage_v2.model.Car;
 import com.example.garage_v2.service.CarService;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,11 +18,13 @@ public class CarController {
     }
 
     @GetMapping("/{id}")
+    @Cacheable(value = "cars", key = "#id")
     public Car getCar(@PathVariable int id) {
         return this.carService.getById(id);
     }
 
     @GetMapping
+    @Cacheable(value = "allCars")
     public List<Car> getCars() {
         return this.carService.getAll();
     }
