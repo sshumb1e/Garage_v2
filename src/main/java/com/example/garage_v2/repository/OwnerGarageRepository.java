@@ -12,8 +12,8 @@ import java.util.List;
 public interface OwnerGarageRepository extends CrudRepository<OwnerGarage, Integer> {
 
     @Query("""
-            SELECT * FROM public.owner as t1
-                FULL JOIN public.car as t2
+            SELECT * FROM "owner" as t1
+                FULL JOIN "car" as t2
                 ON t1.owner_id = t2.owner_id
                 WHERE t1.owner_id = (:id)
                 ORDER BY t2.brand, t2.colour
@@ -22,8 +22,8 @@ public interface OwnerGarageRepository extends CrudRepository<OwnerGarage, Integ
     OwnerGarage findOwnerGarageById(@Param("id") int id);
 
     @Query("""
-           SELECT * FROM public.owner as t1
-                LEFT JOIN public.car as t2
+           SELECT * FROM "owner" as t1
+                LEFT JOIN "car" as t2
                 ON t1.owner_id = t2.owner_id
                 ORDER BY t1.owner_id, t2.brand, t2.colour
            ;
